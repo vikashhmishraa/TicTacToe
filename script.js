@@ -8,6 +8,7 @@ let boxGrid = document.querySelector(".grid");
 let winner = document.querySelector(".winner");
 let cont = document.querySelector(".cont");
 let arr = Array(9).fill(null);
+let clearScore = document.querySelector(".clearScoreBtn");
 
 let playerXscore = document.querySelector(".playerX-score");
 let playerOscore = document.querySelector(".playerO-score");
@@ -21,11 +22,11 @@ let scoreOfo = {
   score: 0,
 };
 
-let updatedScoreOfx = JSON.parse(localStorage.getItem("Player-X-Score"));
-let updatedScoreOfo = JSON.parse(localStorage.getItem("Player-O-Score"));
-
-scoreOfx.score = [...updatedScoreOfx];
-scoreOfo.score = [...updatedScoreOfo];
+// Initialize scores from localStorage
+scoreOfx.score = JSON.parse(localStorage.getItem("Player-X-Score")) || 0;
+scoreOfo.score = JSON.parse(localStorage.getItem("Player-O-Score")) || 0;
+playerXscore.innerText = scoreOfx.score;
+playerOscore.innerText = scoreOfo.score;
 function handleClick(el) {
   checkStart();
   const id = Number(el.id);
@@ -74,9 +75,11 @@ function checkWinner() {
       console.log("x won");
       scoreOfx.score += 1;
       playerXscore.innerHTML = scoreOfx.score;
+      localStorage.setItem("Player-X-Score", JSON.stringify(scoreOfx.score));
     } else if (scoreOfo.sign == currentPlayer) {
       scoreOfo.score += 1;
       playerOscore.innerHTML = scoreOfo.score;
+      localStorage.setItem("Player-O-Score", JSON.stringify(scoreOfo.score));
     }
     return;
   }
@@ -109,7 +112,6 @@ function startBtnFn() {
 
 function resetGame() {
   location.reload();
-  // document.querySelectorAll(".grid div").forEach((el) => el.innerText);
   boxGrid.classList.add("readOnly");
 }
 
@@ -119,12 +121,15 @@ function reStartGame() {
   congratulationText.classList.add("noDisplay");
   winner.classList.add("noDisplay");
   boxGrid.classList.remove("noDisplay");
+  arr = Array(9).fill(null);
+  document.querySelectorAll(".grid div").forEach((el) => (el.innerText = ""));
+  currentPlayer = "X";
   location.reload();
-  // startBtn.innerHTML = `<div onclick="startBtnFn()" class="startBtn">START</div>`;
-  // document.querySelectorAll(".grid div").forEach((el) => (el.innerText = ""));
-  // arr = Array(9).fill(null);
-  localStorage.setItem("Player-X-Score", JSON.stringify(scoreOfx.score));
-  localStorage.setItem("Player-O-Score", JSON.stringify(scoreOfo.score));
+  playersTurn.innerHTML = `Player ${currentPlayer}'s Turn`;
 }
 
-// reStartBtn.addEventListener("click", reStartGame);
+function clearScoreFn() {
+  localStorage.clear("Player-X-Score");
+  localStorage.clear("Player-O-Score");
+  location.reload();
+}

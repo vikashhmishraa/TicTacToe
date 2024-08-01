@@ -8,7 +8,7 @@
 .head {
   height: 10vh;
   width: 100vw;
-  background-color: #f4cc06;
+  background-color: #f4ce14;
   color: #0047ab;
   font-size: 3rem;
   font-weight: 600;
@@ -66,7 +66,7 @@
   background-color: #d4e2f4;
   cursor: pointer;
   font-size: 5rem;
-  color: #f3ca00;
+  color: #f4ce14;
   justify-content: center;
   align-items: center;
 }
@@ -124,7 +124,7 @@
 .footer {
   height: 20vh;
   width: 100vw;
-  background-color: #f4cc06;
+  background-color: #f4ce14;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -154,4 +154,17 @@
 
 .readOnly {
   pointer-events: none;
+}
+
+.clearScoreBtn {
+  position: fixed;
+  margin-top: -40px;
+  margin-left: 1610px;
+  padding: 5px;
+  border-radius: 05px;
+  background-color: #0047ab;
+  border: 2px solid #0047ab;
+  color: white;
+  letter-spacing: 1px;
+  cursor: pointer;
 }
