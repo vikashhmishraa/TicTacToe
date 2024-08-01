@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe Game!</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="head">Tic Tac Toe</div>
+    <div class="cont">
+      <div class="playersTurn">Player X's Turn</div>
+      <div class="congratulations noDisplay">Congratulations 🎉</div>
+      <div class="winner">
+        <!-- <p>
+          Player
+          <br />
+          X
+          <br />
+          Wins
+        </p> -->
+      </div>
+      <div>
+        <!-- <p class="gameTie">Game Tie</p> -->
+      </div>
+
+      <div class="grid readOnly">
+        <div class="row">
+          <div onclick="handleClick(this)" id="0" class="cal cal-1"></div>
+          <div onclick="handleClick(this)" id="1" class="cal cal-5"></div>
+          <div onclick="handleClick(this)" id="2" class="cal cal-2"></div>
+        </div>
+        <div class="row">
+          <div onclick="handleClick(this)" id="3" class="cal cal-3"></div>
+          <div onclick="handleClick(this)" id="4" class="cal"></div>
+          <div onclick="handleClick(this)" id="5" class="cal cal-4"></div>
+        </div>
+        <div class="row">
+          <div onclick="handleClick(this)" id="6" class="cal cal-6"></div>
+          <div onclick="handleClick(this)" id="7" class="cal cal-8"></div>
+          <div onclick="handleClick(this)" id="8" class="cal cal-7"></div>
+        </div>
+      </div>
+      <div onclick="startBtnFn()" class="startBtn">START</div>
+    </div>
+    <div class="footer">
+      <div class="playerX">
+        <p class="playerName">Player X</p>
+        <p class="playerX-score">0</p>
+      </div>
+      <span>:</span>
+      <div class="playerO">
+        <p class="playerName">Player O</p>
+        <p class="playerO-score">0</p>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
